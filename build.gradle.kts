@@ -48,16 +48,18 @@ dependencies {
     val jacksonModuleKotlinVersion = "2.8.7"
     compile(kotlin("stdlib"))
     compile(kotlin("reflect"))
-    compile("org.projectlombok:lombok")
     compile("org.springframework.boot:spring-boot-starter-web")
     compile("org.springframework.boot:spring-boot-starter-actuator")
     compile("org.springframework.boot:spring-boot-starter-data-redis")
     compile("org.springframework.boot:spring-boot-starter-hateoas")
     compile("org.springframework.cloud:spring-cloud-starter-eureka")
+
     compile("com.fasterxml.jackson.module:jackson-module-kotlin:$jacksonModuleKotlinVersion")
+
 //    compile("org.springframework.cloud:spring-cloud-starter-zipkin")
     compile("io.springfox:springfox-swagger2:$swaggerVersion")
     compile("io.springfox:springfox-swagger-ui:$swaggerVersion")
     testCompile("org.springframework.boot:spring-boot-starter-test")
 }
+
 

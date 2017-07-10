@@ -1,30 +1,25 @@
 package kjkrol.eshop.exposedcontent.model;
 
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.Reference;
 import org.springframework.data.redis.core.RedisHash;
 
 import java.io.Serializable;
-import java.lang.*;
-
-import static java.util.UUID.randomUUID;
 
 @RedisHash("cast-entry")
-@Data
-@EqualsAndHashCode(of = "id")
-@NoArgsConstructor
 public class CastEntry implements Serializable {
     @Id
-    private String id = randomUUID().toString();
+    private String id;
     @Reference
     private Person person;
     @Reference
     private Character character;
 
-    public CastEntry(Person person, Character character) {
+    public CastEntry() {
+    }
+
+    public CastEntry(String id, Person person, Character character) {
+        this.id = id;
         this.person = person;
         this.character = character;
     }
@@ -39,5 +34,29 @@ public class CastEntry implements Serializable {
 
     public Character getCharacter() {
         return character;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        CastEntry castEntry = (CastEntry) o;
+
+        return id != null ? id.equals(castEntry.id) : castEntry.id == null;
+    }
+
+    @Override
+    public int hashCode() {
+        return id.hashCode();
+    }
+
+    @Override
+    public String toString() {
+        return "CastEntry{" +
+                "id='" + id + '\'' +
+                ", person=" + person +
+                ", character=" + character +
+                '}';
     }
 }

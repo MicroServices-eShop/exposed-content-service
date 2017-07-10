@@ -1,5 +1,14 @@
 package kjkrol.eshop.exposedcontent.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public enum PersonRole {
-    ACTOR, WRITER, DIRECTOR, PRODUCER
+    @JsonProperty("actor")
+    ACTOR,
+    @JsonProperty("writer")
+    WRITER,
+    @JsonProperty("director")
+    DIRECTOR,
+    @JsonProperty("producer")
+    PRODUCER
 }
